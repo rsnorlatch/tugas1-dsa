@@ -1,4 +1,6 @@
+#include <iomanip>
 #include <iostream>
+#include <random>
 #include <string>
 #include <utility>
 
@@ -66,23 +68,35 @@ void tambah_lagu(Playlist *playlist, Lagu lagu) {
 int main() {
   Playlist playlist = {};
 
-  tambah_lagu(&playlist, (Lagu){
-                             .judul = "lagu3",
-                             .penyanyi = "peyanyi3",
-                             .tahun_lagu = 1090,
-                         });
-  tambah_lagu(&playlist, (Lagu){
-                             .judul = "lagu2",
-                             .penyanyi = "peyanyi2",
-                             .tahun_lagu = 1091,
-                         });
-  tambah_lagu(&playlist, (Lagu){
-                             .judul = "lagu1",
-                             .penyanyi = "peyanyi1",
-                             .tahun_lagu = 1092,
-                         });
+  char pilihan_menu;
+  bool menu_tidak_valid = false;
+  do {
+    system("clear");
 
-  sort_playlist(&playlist);
+    if (menu_tidak_valid) {
+      cout << "menu yang anda pilih tidak valid!" << endl << endl;
+    }
 
-  display_playlist(&playlist);
+    cout << "Playlist Lagu" << endl;
+    cout << setfill('=') << setw(13) << "" << endl;
+    cout << "1. tambah lagu" << endl;
+    cout << "2. cari lagu" << endl;
+    cout << "3. keluar" << endl;
+
+    cout << "Pilih menu: ";
+    cin >> pilihan_menu;
+
+    switch (pilihan_menu) {
+    case '1':
+      break;
+    case '2':
+      break;
+    case '3':
+      break;
+    default:
+      pilihan_menu = '\0';
+      menu_tidak_valid = true;
+      break;
+    }
+  } while (pilihan_menu == '\0');
 }
