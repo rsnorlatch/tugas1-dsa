@@ -144,6 +144,13 @@ void display_home_menu(Playlist *playlist) {
 
     cout << "Playlist Lagu" << endl;
     cout << setfill('=') << setw(13) << "" << endl;
+
+    for (int i = 0; playlist->antrean[i].judul != ""; i++) {
+      cout << lagu_to_string(&playlist->antrean[i]) << endl;
+    }
+
+    cout << endl;
+
     cout << "1. tambah lagu" << endl;
     cout << "2. cari lagu" << endl;
     cout << "3. keluar" << endl;
