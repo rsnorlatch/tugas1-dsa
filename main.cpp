@@ -26,10 +26,10 @@ string lagu_to_string(Lagu *lagu) {
   return lagu->penyanyi + " - " + lagu->judul;
 }
 
-Lagu *cari_lagu_dari_judul(Playlist playlist, string judul) {
-  for (int i = 0; i <= playlist.jumlah; i++) {
-    if (playlist.antrean[i].judul == judul) {
-      return &playlist.antrean[i];
+Lagu *cari_lagu_dari_judul(Playlist *playlist, string judul) {
+  for (int i = 0; i <= playlist->jumlah; i++) {
+    if (playlist->antrean[i].judul == judul) {
+      return &playlist->antrean[i];
     }
   }
 
@@ -93,6 +93,42 @@ void display_tambah_lagu(Playlist *playlist) {
     cout << endl;
   }
 
+  cout << "Tekan tombol sembarang untuk kembali ke menu" << endl;
+
+  system("pause");
+  display_home_menu(playlist);
+}
+
+void display_telusur_lagu(Playlist *playlist) {
+  string query;
+
+  cout << "Masukkan Judul Lagu yang Dicari : ";
+  cin.ignore();
+  getline(cin, query);
+
+  Lagu *output_lagu = cari_lagu_dari_judul(playlist, query);
+
+  if (output_lagu->judul == LAGU_KOSONG.judul) {
+    cout << "Lagu tidak ditemukkan!" << endl;
+    cout << "Tekan tombol sembarang untuk kembali ke menu" << endl;
+
+    system("pause");
+
+    display_home_menu(playlist);
+    return;
+  }
+
+  cout << "Lagu ditemukkan!" << endl;
+  cout << "data lagu : " << endl;
+  cout << "Judul Lagu : " << output_lagu->judul << endl;
+  cout << "Penyanyi : " << output_lagu->penyanyi << endl;
+  cout << "Genre : " << output_lagu->genre << endl;
+  cout << "Tahun Lagu : " << output_lagu->tahun_lagu << endl << endl;
+
+  cout << "Tekan tombol sembarang untuk kembali ke menu" << endl;
+
+  system("pause");
+
   display_home_menu(playlist);
 }
 
@@ -120,8 +156,11 @@ void display_home_menu(Playlist *playlist) {
       display_tambah_lagu(playlist);
       break;
     case '2':
+      display_telusur_lagu(playlist);
       break;
     case '3':
+      cout << "Goodbye!" << endl;
+      exit(0);
       break;
     default:
       pilihan_menu = '\0';
