@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <iomanip>
 #include <iostream>
 #include <random>
@@ -65,6 +66,33 @@ void tambah_lagu(Playlist *playlist, Lagu lagu) {
   playlist->jumlah++;
 }
 
+void display_tambah_lagu(Playlist *playlist) {
+  system("clear");
+
+  int jumlah_lagu;
+  cout << "Masukkan jumlah lagu yang ingin diinputkan : ";
+  cin >> jumlah_lagu;
+  cout << endl;
+
+  for (int i = 0; i < jumlah_lagu; i++) {
+    Lagu input_lagu;
+    cout << "Masukkan judul lagu : ";
+    cin >> input_lagu.judul;
+
+    cout << "Masukkan Penyanyi Lagu : ";
+    cin >> input_lagu.penyanyi;
+
+    cout << "Masukkan Genre Lagu : ";
+    cin >> input_lagu.genre;
+
+    cout << "Masukkan Tahun Lagu : ";
+    cin >> input_lagu.tahun_lagu;
+
+    tambah_lagu(playlist, input_lagu);
+    cout << endl;
+  }
+}
+
 int main() {
   Playlist playlist = {};
 
@@ -88,6 +116,7 @@ int main() {
 
     switch (pilihan_menu) {
     case '1':
+      display_tambah_lagu(&playlist);
       break;
     case '2':
       break;
