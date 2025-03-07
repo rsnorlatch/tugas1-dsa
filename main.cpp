@@ -1,7 +1,6 @@
 #include <cstdlib>
 #include <iomanip>
 #include <iostream>
-#include <random>
 #include <string>
 #include <utility>
 
@@ -93,9 +92,7 @@ void display_tambah_lagu(Playlist *playlist) {
   }
 }
 
-int main() {
-  Playlist playlist = {};
-
+void display_home_menu(Playlist *playlist) {
   char pilihan_menu;
   bool menu_tidak_valid = false;
   do {
@@ -116,7 +113,7 @@ int main() {
 
     switch (pilihan_menu) {
     case '1':
-      display_tambah_lagu(&playlist);
+      display_tambah_lagu(playlist);
       break;
     case '2':
       break;
@@ -128,4 +125,9 @@ int main() {
       break;
     }
   } while (pilihan_menu == '\0');
+}
+
+int main() {
+  Playlist playlist = {};
+  display_home_menu(&playlist);
 }
