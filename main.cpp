@@ -65,6 +65,8 @@ void tambah_lagu(Playlist *playlist, Lagu lagu) {
   playlist->jumlah++;
 }
 
+void display_home_menu(Playlist *playlist);
+
 void display_tambah_lagu(Playlist *playlist) {
   system("clear");
 
@@ -90,6 +92,8 @@ void display_tambah_lagu(Playlist *playlist) {
     tambah_lagu(playlist, input_lagu);
     cout << endl;
   }
+
+  display_home_menu(playlist);
 }
 
 void display_home_menu(Playlist *playlist) {
